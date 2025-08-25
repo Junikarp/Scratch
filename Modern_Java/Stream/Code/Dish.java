@@ -1,4 +1,4 @@
-package Modern_Java;
+package Modern_Java.Stream.Code;
 
 public class Dish {
     private final String name;

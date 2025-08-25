@@ -1,4 +1,4 @@
-package Modern_Java;
+package Modern_Java.Stream.Code;
 
 import java.util.Arrays;
 import java.util.List;
