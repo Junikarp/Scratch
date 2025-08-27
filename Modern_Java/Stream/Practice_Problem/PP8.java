@@ -27,5 +27,4 @@ public class PP8 {
 
         System.out.println(Min_value);
     }
-
 }
