@@ -110,3 +110,52 @@ class ReadWriteLockTest {
 }
 ```
 
+# 원자적 타입 (Atomic Type)
+> 단일 변수의 원자적 연산을 처리할 때에는 Atomic 변수를 사용하는 것이 효과적이다.
+
+아래 코드를 한번 보자.
+
+```java
+import java.util.concurrent.locks.ReentrantLock;
+
+public class Increaser {
+    private Lock lock = new ReentrantLock();
+    private int cnt = 0;
+    
+    public voic increase() {
+        lock.lock();
+        try {
+            cnt += 1;
+        } finally {
+            lock.unlock();
+        }
+    }
+}
+```
+변수 cnt 를 카운터 증가할 때 동시성 문제를 잠금을 통해 해결했다. 
+
+하지만 위의 코드는 잠금을 확보한 스레드 이외의 스레드가 대기해야 하기에 CPU 효율이 떨어진다는 문제가 있다. 이 때 원자적 타입을 사용하면 이 문제를 해결 가능하다.
+
+```java
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class Increaser {
+    private AtomicInteger cnt = new AtomicInteger(0);
+
+    public voic increase() {
+            cnt.incrementAndGet();
+    }
+    
+    public int getCnt() {
+        return cnt.get();
+    }
+}
+```
+
+위와 같이 자바에서 지원하는 Atomic 타입을 사용하면 다중 스레드 환경에서 동시성 문제 없이 공유 자원을 변경 가능하다.
+
+
+Atomic 타입은 내부적으로 하드웨어 수준의 CAS(Compare And Swap) 연산을 사용하며 이름 그대로 비교 후 교체하는 연산이다. 이는
+운영체제와 JVM 을 이용한 Lock 방식의 스레드 동기화에 비해 오버헤드가 적다.
+
+다만 단순 원자적 연산보다 복잡한 로직이나 트랜잭션은 Lock 방식을 쓰는 것이 좋다.
