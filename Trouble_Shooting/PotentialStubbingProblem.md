@@ -71,7 +71,7 @@ public Question save(Question question) {
 결과적으로 우리가 넣기로 약속했던 `questionEntity` 가 아닌 영속성 객체로 변환된 `question` 객체가 `save()`에 사용되었고, 당연히 다른 값이 들어왔기에 오류가 발생한 것이었다.
 
 ### 해결
-즉 어떤 객체가 들어가더라도 나오는 값을 고정되도록 만드는 `any()` 를 활용해 테스트를 완성했습니다. 아래는 수정 후 전체 코드입니다.
+즉 어떤 객체가 들어가더라도 나오는 값을 고정되도록 만드는 `any()` 를 활용해 테스트를 완성하였다. 아래는 수정 후 전체 코드
 
 ```java
 package com.junikarp.qbank.question.infrastructure;
@@ -157,7 +157,7 @@ class QuestionRepositoryImplTest {
 }
 ```
 
-수정 후 무사히 테스트 완료 된 모습을 확인할 수 있었습니다.
+수정 후 무사히 테스트 완료 된 모습을 확인할 수 있었다.
 
 ![img.png](img/PotentialStubbingProblem_result.png)
 
