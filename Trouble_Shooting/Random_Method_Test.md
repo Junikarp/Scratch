@@ -193,7 +193,7 @@ void createRandomQuestionList_메서드로_랜덤한_순서의_문제를_지정�
     //then
     assertThat(randomQuestionList.size()).isEqualTo(quantity);
     assertThat(initQuestionList).containsAll(randomQuestionList);
-    assertThat(randomQuestionList).isNotEqualTo(initQuestionList); // 아주 가끔 실패 뜰 수도 있음
+    assertThat(randomQuestionList).isNotEqualTo(initQuestionList);
 }
 ```
 
