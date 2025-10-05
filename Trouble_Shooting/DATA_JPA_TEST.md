@@ -109,7 +109,7 @@ public class QuestionRepositoryTest {
 }
 ```
 
-테스트의 목적 상 Jpa repository 를 활용하여 DB 와 영속성 객체가 잘 연결되어 데이터를 가져오는 부분이 메인이라고 생각했기 때문에 도메인 엔티티로 변환하는 과정까지 테스트 할 필요는 없다고 판단했다.
+테스트의 목적 상 Jpa repository 를 활용하여 DB 와 영속성 객체가 잘 연결되어 데이터를 가져오는 부분은 별개로 테스트하는 것이 맞다고 생각되었다.
 
 ![img.png](img/DataJpaTest.png)
 
